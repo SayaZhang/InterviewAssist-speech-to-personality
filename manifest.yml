@@ -1,0 +1,15 @@
+---
+declared-services:
+  speech-to-text-service-standard:
+    label: speech_to_text
+    plan: standard
+applications:
+- name: TESTME01
+  path: .
+  command: node app.js
+  memory: 512M
+  services:
+  - speech-to-text-service-standard
+  - 语言翻译-jp
+  env:
+    NODE_ENV: production

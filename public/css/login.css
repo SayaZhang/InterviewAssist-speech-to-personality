@@ -1,0 +1,4 @@
+nav{position:center; transform:uupercase;width: 12em;}
+nav a{display:block;text-decoration:none;padding:.7em 1em;color:#111111;}
+nav a:hover{background-color:#ff0000;color:#f9f9f9};
+body{width:960px;margin: 2em auto;padding:0 2em;}

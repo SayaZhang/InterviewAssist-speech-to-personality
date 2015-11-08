@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ct" content="<%= ct %>">
+    <title>Speech to Text</title>
+    <link href="css/watson-bootstrap-style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+  </head>
+  <body>
+
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <span id="dropdownMenuDefault" class="dropdown-text">US English broadband model (16KHz) </span>
+              <span class="caret"></span>
+              </button>
+              <ul id="dropdownMenuList" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              </ul>
+            </div>
+
+          </div><!-- .col-lg-6 -->
+
+        </div><!-- row -->
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="audioParent">
+              <audio style="display:none" class="audio" controls>
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          </div>
+        </div><!-- row -->
+
+
+        <div class="row">
+          <nav class="navbar navbar-inverse">
+          <ul class="navbar-text">
+            <li id="recordButton" class="button-row nav-inverse-color">
+            <img id="microphoneIcon" src="images/microphone.svg" class="icon">
+            <span class="nav-label">Record Audio</span>
+            </li>
+            <li class="file-upload button-row nav-inverse-color">
+            <div id="fileUploadTarget">
+              <img src="images/upload.svg" class="icon"></img>
+              <span class="nav-label">Select File</span>
+            </div>
+            </li>
+            <li class="play-sample-1 button-row nav-inverse-color">
+            <img src="images/play.svg" class="icon">
+            <span class="nav-label">Play Sample 1</span>
+            </li>
+            <li class="play-sample-2 button-row nav-inverse-color">
+            <img src="images/play.svg" class="icon">
+            <span class="nav-label">Play  Sample 2</span>
+            </li>
+          </ul>
+
+          </nav>
+        </div>
+        <!-- Tab panes -->
+        <div class="row" style="  margin: 0;">
+          <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
+            <div class="well">
+              <form autocomplete="off" class="form-horizontal">
+                <div role="tabpanel">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Text</a></li>
+                    <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">JSON</a></li>
+                  </ul>
+                  <div class="hr-tab"></div>
+                  <fieldset>
+                    <div class="row error-row">
+                      <div class="col-lg-12">
+                        <div id="errorAlert" >
+                          <span id="errorMessage"></span>
+                          <a class="pull-right" href="#" id="errorClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row notification-row">
+                      <div class="col-lg-12">
+                        <div id="notificationAlert" >
+                          <span id="notificationMessage"></span>
+                          <a class="pull-right" href="#" id="notificationClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row tabpanel-row">
+                      <div class="col-lg-12">
+                        <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane active" id="home2">
+                            <textarea readonly id="resultsText"></textarea>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="profile2">
+                            <textarea readonly id="resultsJSON"></textarea>
+                          </div>
+                        </div>
+                      </div><!-- .col-lg-12 -->
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div><!-- /.well -->
+        </div><!-- /.tabpanel -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>Metadata</h3>
+                <span class="pull-right clickable"><i class="caret-up" style="  margin-top: -1.3em;"></i></span>
+              </div>
+              <div class="panel-body">
+
+                <!-- Table -->
+                <div class="table-scroll">
+                  <table id="metadataTable">
+                    <thead>
+                      <tr class="table-header-row">
+                        <th>WORD</th>
+                        <th>START TIME(sec)</th>
+                        <th>END TIME(sec)</th>
+                        <th>CONFIDENCE</th>
+                      </tr>
+                    </thead>
+                    <tbody id="metadataTableBody">
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- END Table -->
+                <div class="alt-hypothesis">
+                  <h5>Alternate Hypotheses</h5><hr>
+                  <div class="hypotheses">
+                    <ol></ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spacer-->
+            <!-- TODO: Move this to CSS-->
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <br><br>
+              </div>
+            </div>
+
+
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+
+      </div><!-- /.container -->
+
+      <!-- for file upload dialog in toolbar -->
+      <input style="display:none" type="file" id="fileUploadDialog">
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <span id="dropdownMenuDefault" class="dropdown-text">US English broadband model (16KHz) </span>
+              <span class="caret"></span>
+              </button>
+              <ul id="dropdownMenuList" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              </ul>
+            </div>
+
+            <div id="recordButton" class="button-row nav-inverse-color">
+              <img id="microphoneIcon" src="images/microphone.svg" class="icon">
+              <span class="nav-label">Record Audio</span>
+            </div>
+
+                    <div class="row" style="  margin: 0;">
+          <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
+            <div class="well">
+              <form autocomplete="off" class="form-horizontal">
+                <div role="tabpanel">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Text</a></li>
+                    <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">JSON</a></li>
+                  </ul>
+                  <div class="hr-tab"></div>
+                  <fieldset>
+                    <div class="row error-row">
+                      <div class="col-lg-12">
+                        <div id="errorAlert" >
+                          <span id="errorMessage"></span>
+                          <a class="pull-right" href="#" id="errorClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row notification-row">
+                      <div class="col-lg-12">
+                        <div id="notificationAlert" >
+                          <span id="notificationMessage"></span>
+                          <a class="pull-right" href="#" id="notificationClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row tabpanel-row">
+                      <div class="col-lg-12">
+                        <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane active" id="home2">
+                            <textarea readonly id="resultsText"></textarea>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="profile2">
+                            <textarea readonly id="resultsJSON"></textarea>
+                          </div>
+                        </div>
+                      </div><!-- .col-lg-12 -->
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div><!-- /.well -->
+        </div><!-- /.tabpanel -->
+<div class="col-lg-6 col-md-12 col-xs-12">
+        <div style="display:none;" class="form-group row loading text-center loading">
+          <h2>&nbsp;</h2>
+          <img src="images/watson.gif">
+        </div>
+        <div style="display: none;" class="form-group row error">
+          <h2>&nbsp;</h2>
+          <div class="well">
+            <p class="errorMsg"></p>
+            <div style="display:none;margin-bottom:10px;" class="captcha">
+              <div data-sitekey="6LcRbQkTAAAAAGUFVbnuqDfse-XZASLZwoC34oJV" class="g-recaptcha"></div>
+            </div>
+          </div>
+        </div>
+		</div>
+		<div style="display: none;" class="results">
+				  <h2>Your Personality*</h2>
+				  <div class="well">
+					<div class="summary-div"></div>
+					<div style="color: gray" class="text-right">
+					  <em class="small">*Compared to most people who participated in our surveys.</em>
+					</div>
+					<div style="color: gray" class="text-right">
+					  <em class="small outputMessageFootnote"></em>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <div style="display: none;" class="results">
+				<div class="row">
+				  <div class="col-lg-5 col-md-12 col-xs-12">
+					<h3>Data Behind Your Personality</h3>
+					<div style="display: none;" class="col555px well traits"></div>
+				  </div>
+				  <div class="col-lg-7 col-xs-12 col-md-12">
+					<h3>Visualization of Personality Data</h3>
+					<div id="vizcontainer" class="well"></div>
+				  </div>
+				</div>
+			  </div>
+      <div class="hidden">
+        <div id="header-template">
+          <div class="row theader">
+            <div class="col-lg-7 col-xs-7">
+              <span>Name</span>
+            </div>
+            <div class="col-lg-5 col-xs-5 text-right">
+              <span>Value</span>
+            </div>
+          </div>
+        </div>
+        <div id="trait-template">
+          <div class="row">
+            <div class="tname col-lg-7 col-xs-7">
+              <span></span>
+            </div>
+            <div class="tvalue col-lg-5 col-xs-5 text-right">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div id="model-template">
+          <div class="row">
+            <div class="col-lg-12 col-xs-12 text-center">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Place js files at the end of the document, with fallbacks for CDNs -->
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	  <script type="text/javascript" src="/js/d3.v2.min.js"></script>
+	  <script type="text/javascript" src="/js/i18n.js"></script>
+	  <script type="text/javascript" src="/js/personality.js"></script>
+  <script type="text/javascript" src="/js/string-utils.js"></script>
+  <script type="text/javascript" src="/js/textsummary.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="js/index.js"></script>
+<script>
+    textSummary.init('json');
+  </script>
+<!--      <script>
+      $(function(){
+        $("#recordButton").click(function(e){
+           var text = $('textarea').val();
+          alert(text);
+          })
+      });
+      </script>-->
+  </body>
+</html>
