@@ -1,4 +1,4 @@
-/*!
+images/microphone.svg/*!
  * Bootstrap v3.1.1
  *
  * Copyright 2014 Twitter, Inc
@@ -793,8 +793,8 @@ pre code {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -1677,7 +1677,7 @@ table th[class*="col-"] {
 
 /*code pen table */
 table {
-    margin: 2em 0 0 0;
+    /*margin: 2em 0 0 0;*/
     /*border-bottom: 3px solid #c0e6ff;*/
     width: 100%;
     padding:0;
@@ -1687,8 +1687,9 @@ table {
   }
 
   table tr {
-    border-bottom: 2px solid #c0e6ff; /*blue 10*/
+    /*border-bottom: 2px solid #c0e6ff;*/ /*blue 10*/
     padding: 5px;
+    border-bottom: 1px dashed #501466;
   }
 
 
@@ -3470,7 +3471,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
 .nav-inverse-color:hover {
-  background-color: #4178BE;/*gray 50*/
+  background-color: #fff;/*gray 50*/
 }
 
 .nav-inverse-color {
@@ -4626,14 +4627,15 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #ebccd1;
 }
 .well {
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 1em;
-background-color: #f4f4f4;
-  border: 2px solid #ececec;
-  border-radius: 0px;
- // -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
- // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+ min-height: 20px;
+    padding: 0px 19px 0px 19px;
+    /*margin-bottom: 1em;*/
+    /* background-color: #f4f4f4; */
+   /* border: 2px solid #ececec;*/
+    border-radius: 0px;
+    color: #ddd;
+    font-family: Microsoft YaHei;
+    float: left;
 }
 .well blockquote {
   border-color: #ddd;
@@ -5387,8 +5389,9 @@ h1 {
   font-weight: 700;
 }
 h2 {
-  color: #d74108;
-  font-weight: 700;
+  color: #ddd;
+    font-weight: 700;
+    text-align: center;
 }
 table.table,
 .table tr td {
@@ -5640,7 +5643,7 @@ table.table,
   width: 1120px;
 }
 .micButton {
-  background: url('../images/microphone.svg') no-repeat;
+  background: url('../images/record.png') no-repeat;
   width: 64px;
   height: 64px;
   margin: 0px auto;

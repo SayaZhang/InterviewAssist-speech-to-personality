@@ -1,15 +1,16 @@
 ---
 declared-services:
-  speech-to-text-service-standard:
+ speech-to-text-service-standard:
     label: speech_to_text
     plan: standard
 applications:
-- name: TESTME01
+- name: interviewAssistant
   path: .
   command: node app.js
-  memory: 512M
+  memory: 1024M
   services:
-  - speech-to-text-service-standard
-  - 语言翻译-jp
+  - 语音转文本-15
+  - Cloudant NoSQL DB-wm
+  - Personality Insights-qs
   env:
     NODE_ENV: production

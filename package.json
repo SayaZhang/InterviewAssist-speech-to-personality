@@ -14,14 +14,23 @@
     "morgan": "^1.6.1",
     "vcap_services": "^0.1.7",
     "watson-developer-cloud": "^0.10.6",
-    "mongodb": "*"
-
+    "mongodb": "*",
+    "cloudant":"*",
+    "nano":"*",
+    "i18next":"*",
+    "errorhandler":"*",
+    "method-override":"*",
+    "connect-multiparty":"*",
+    "browserify":"*",
+    "browserify-shim":"*",
+    "request":"*",
+    "uglifyjs":"*"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/watson-developer-cloud/speech-to-text-nodejs.git"
   },
-  "author": "IBM Corp.",
+  "author": "shu-and-lea",
   "browserify-shim": {
     "jquery": "global:jQuery"
   },
@@ -32,19 +41,19 @@
   },
   "contributors": [
     {
-      "name": "German Attanasio Ruiz",
-      "email": "germanatt@us.ibm.com"
+      "name": "lea",
+      "email": "camixxx@outlook.com"
     },
     {
-      "name": "Daniel Bolano",
-      "email": "dbolano@us.ibm.com"
+      "name": "shu",
+      "email": "zhangshugar@163.com"
     },
     {
-      "name": "Britany L. Ponvelle",
+      "name": "yilan",
       "email": "blponvelle@us.ibm.com"
     },
     {
-      "name": "Eric S. Bullington",
+      "name": "jingyue",
       "email": "esbullin@us.ibm.com"
     }
   ],

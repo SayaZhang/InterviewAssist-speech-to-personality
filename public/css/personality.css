@@ -11,14 +11,24 @@
 .personalityWidget svg g.sector {
 	cursor: pointer;
 }
-
 .sector_leaf_text{
-	font-family:Arial;
+	font-family: Microsoft Yahei;
+	font-weight: 500;
+	font-size:14px;
+}
+g.sector{
+	fill:#ddd;
+}
+.sector_nonleaf_text{
+	font-family:Microsoft Yahei;
 	font-weight: 500;
 }
-
-.sector_nonleaf_text{
-	font-family:Arial;
+.sector_label_path{
+	font-family:Microsoft Yahei;
+	font-weight: 500;
+}
+.arc_for_label_number{
+	font-family:Microsoft Yahei;
 	font-weight: 500;
 }
 

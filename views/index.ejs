@@ -5,18 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="ct" content="<%= ct %>">
-    <title>Speech to Text</title>
+    <title>Interview Assiatant</title>
     <link href="css/watson-bootstrap-style.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/personality.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico" />
   </head>
   <body>
 
 
-        <div class="row">
+
+
+          </nav>
+        </div>
+
+        <div class="row" style="display: none;">
           <div class="col-lg-4 col-md-6 col-sm-12">
 
-            <div class="dropdown">
+            <div class="dropdown" style="display: none;">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
               <span id="dropdownMenuDefault" class="dropdown-text">US English broadband model (16KHz) </span>
               <span class="caret"></span>
@@ -29,7 +35,7 @@
 
         </div><!-- row -->
 
-        <div class="row">
+        <div class="row" style="display: none;">
           <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="audioParent">
               <audio style="display:none" class="audio" controls>
@@ -40,234 +46,41 @@
         </div><!-- row -->
 
 
-        <div class="row">
-          <nav class="navbar navbar-inverse">
-          <ul class="navbar-text">
-            <li id="recordButton" class="button-row nav-inverse-color">
-            <img id="microphoneIcon" src="images/microphone.svg" class="icon">
-            <span class="nav-label">Record Audio</span>
-            </li>
-            <li class="file-upload button-row nav-inverse-color">
-            <div id="fileUploadTarget">
-              <img src="images/upload.svg" class="icon"></img>
-              <span class="nav-label">Select File</span>
-            </div>
-            </li>
-            <li class="play-sample-1 button-row nav-inverse-color">
-            <img src="images/play.svg" class="icon">
-            <span class="nav-label">Play Sample 1</span>
-            </li>
-            <li class="play-sample-2 button-row nav-inverse-color">
-            <img src="images/play.svg" class="icon">
-            <span class="nav-label">Play  Sample 2</span>
-            </li>
-          </ul>
-
-          </nav>
+        <!-- <div class="head">
         </div>
-        <!-- Tab panes -->
-        <div class="row" style="  margin: 0;">
-          <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
-            <div class="well">
-              <form autocomplete="off" class="form-horizontal">
-                <div role="tabpanel">
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Text</a></li>
-                    <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">JSON</a></li>
-                  </ul>
-                  <div class="hr-tab"></div>
-                  <fieldset>
-                    <div class="row error-row">
-                      <div class="col-lg-12">
-                        <div id="errorAlert" >
-                          <span id="errorMessage"></span>
-                          <a class="pull-right" href="#" id="errorClose">&times;</a>
-                        </div>
-                      </div>
-                    </div>
+ -->
 
-                    <div class="row notification-row">
-                      <div class="col-lg-12">
-                        <div id="notificationAlert" >
-                          <span id="notificationMessage"></span>
-                          <a class="pull-right" href="#" id="notificationClose">&times;</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row tabpanel-row">
-                      <div class="col-lg-12">
-                        <div class="tab-content">
-                          <div role="tabpanel" class="tab-pane active" id="home2">
-                            <textarea readonly id="resultsText"></textarea>
-                          </div>
-                          <div role="tabpanel" class="tab-pane" id="profile2">
-                            <textarea readonly id="resultsJSON"></textarea>
-                          </div>
-                        </div>
-                      </div><!-- .col-lg-12 -->
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
-            </div>
-          </div><!-- /.well -->
-        </div><!-- /.tabpanel -->
+        <div class="leftHalf">
 
+          <div id="introNew">
+              <img class="newappIcon" src="images/logo.png" style="
+          margin-top: 50px;">
+              <h1 style="color: white">
+                Welcome to the <span class="blue">Interview Assistant powered by Bluemix</span>
+              </h1>
+              <p class="description">欢迎使用.</p>
+          </div>
+          
+
+          <div style="display: none;" class="results">
+              <h2 style="margin-bottom: 0px;">Personality</h2>
+              <div class="well">
+                <div class="summary-div"></div>              
+              </div>
+          </div>
+        
+        <div style="display: none;" class="results">
         <div class="row">
-          <div class="col-md-12">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3>Metadata</h3>
-                <span class="pull-right clickable"><i class="caret-up" style="  margin-top: -1.3em;"></i></span>
-              </div>
-              <div class="panel-body">
-
-                <!-- Table -->
-                <div class="table-scroll">
-                  <table id="metadataTable">
-                    <thead>
-                      <tr class="table-header-row">
-                        <th>WORD</th>
-                        <th>START TIME(sec)</th>
-                        <th>END TIME(sec)</th>
-                        <th>CONFIDENCE</th>
-                      </tr>
-                    </thead>
-                    <tbody id="metadataTableBody">
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- END Table -->
-                <div class="alt-hypothesis">
-                  <h5>Alternate Hypotheses</h5><hr>
-                  <div class="hypotheses">
-                    <ol></ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Spacer-->
-            <!-- TODO: Move this to CSS-->
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <br><br>
-              </div>
-            </div>
-
-
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-      <!-- for file upload dialog in toolbar -->
-      <input style="display:none" type="file" id="fileUploadDialog">
-
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              <span id="dropdownMenuDefault" class="dropdown-text">US English broadband model (16KHz) </span>
-              <span class="caret"></span>
-              </button>
-              <ul id="dropdownMenuList" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              </ul>
-            </div>
-
-            <div id="recordButton" class="button-row nav-inverse-color">
-              <img id="microphoneIcon" src="images/microphone.svg" class="icon">
-              <span class="nav-label">Record Audio</span>
-            </div>
-
-                    <div class="row" style="  margin: 0;">
-          <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
-            <div class="well">
-              <form autocomplete="off" class="form-horizontal">
-                <div role="tabpanel">
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Text</a></li>
-                    <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">JSON</a></li>
-                  </ul>
-                  <div class="hr-tab"></div>
-                  <fieldset>
-                    <div class="row error-row">
-                      <div class="col-lg-12">
-                        <div id="errorAlert" >
-                          <span id="errorMessage"></span>
-                          <a class="pull-right" href="#" id="errorClose">&times;</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row notification-row">
-                      <div class="col-lg-12">
-                        <div id="notificationAlert" >
-                          <span id="notificationMessage"></span>
-                          <a class="pull-right" href="#" id="notificationClose">&times;</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row tabpanel-row">
-                      <div class="col-lg-12">
-                        <div class="tab-content">
-                          <div role="tabpanel" class="tab-pane active" id="home2">
-                            <textarea readonly id="resultsText"></textarea>
-                          </div>
-                          <div role="tabpanel" class="tab-pane" id="profile2">
-                            <textarea readonly id="resultsJSON"></textarea>
-                          </div>
-                        </div>
-                      </div><!-- .col-lg-12 -->
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
-            </div>
-          </div><!-- /.well -->
-        </div><!-- /.tabpanel -->
-<div class="col-lg-6 col-md-12 col-xs-12">
-        <div style="display:none;" class="form-group row loading text-center loading">
-          <h2>&nbsp;</h2>
-          <img src="images/watson.gif">
-        </div>
-        <div style="display: none;" class="form-group row error">
-          <h2>&nbsp;</h2>
-          <div class="well">
-            <p class="errorMsg"></p>
-            <div style="display:none;margin-bottom:10px;" class="captcha">
-              <div data-sitekey="6LcRbQkTAAAAAGUFVbnuqDfse-XZASLZwoC34oJV" class="g-recaptcha"></div>
-            </div>
+          <!-- <div class="col-lg-5 col-md-12 col-xs-12">
+          <h3>Data Behind Your Personality</h3>
+          <div style="display: none;" class="col555px well traits"></div>
+          </div> -->
+          <div class="col-lg-7 col-xs-12 col-md-12">
+          <!-- <h3>Visualization of Personality Data</h3> -->
+          <div id="vizcontainer" class="well"></div>
           </div>
         </div>
-		</div>
-		<div style="display: none;" class="results">
-				  <h2>Your Personality*</h2>
-				  <div class="well">
-					<div class="summary-div"></div>
-					<div style="color: gray" class="text-right">
-					  <em class="small">*Compared to most people who participated in our surveys.</em>
-					</div>
-					<div style="color: gray" class="text-right">
-					  <em class="small outputMessageFootnote"></em>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div style="display: none;" class="results">
-				<div class="row">
-				  <div class="col-lg-5 col-md-12 col-xs-12">
-					<h3>Data Behind Your Personality</h3>
-					<div style="display: none;" class="col555px well traits"></div>
-				  </div>
-				  <div class="col-lg-7 col-xs-12 col-md-12">
-					<h3>Visualization of Personality Data</h3>
-					<div id="vizcontainer" class="well"></div>
-				  </div>
-				</div>
-			  </div>
+        </div>
       <div class="hidden">
         <div id="header-template">
           <div class="row theader">
@@ -297,15 +110,218 @@
           </div>
         </div>
       </div>
+  </div>
+
+  </div>
+
+
+  <div class = "rightHalf">
+  <header>
+    <div class='title'>面试名单
+    <!--
+    <button class='' onclick="toggleAppInfo()" title='Application Information'>
+        <img height="15px" width="15px" src='images/info.png' alt='detail'/>    
+    </button>
+    -->
+    </div>
+
+  </header> 
+  <!--
+  <section id='appinfo' style='display: none;'>
+    <table>
+      <tbody>
+        <tr><td>This application helps you organize your favorite files.</td></tr>
+        <tr><td>Supports all file types, like Audio, Video, Photos, Text etc.</td></tr>
+        <tr><td>Click on <img src='images/add.png' alt='add'/> icon to create a new category for your files. Provide a title and description for the category in the text fields.</td></tr>
+        <tr><td>To add a file to a given category, Click on 'Browse' button to select a file, and 'Upload' button to upload the file.</td></tr>
+        <tr><td>To modify a title or description, Edit the text and press Enter.</td></tr>
+        <tr><td>You can add multiple files (of any type) to a category.</td></tr>
+        <tr><td>Click on <span class = 'deleteBtn' alt='delete'></span> icon to delete the category.</td></tr>
+        
+        
+      </tbody>
+    </table>
+  </section>
+  -->
+  <section>
+    <table id='notes' class='records' border='0' cellspacing='0' cellpadding='0'><tbody></tbody></table>
+  </section>
+  <footer>
+    <!-- <div class='tips'>点击ADD增加面试者。 -->
+      <!-- <button class='detailBtn' onclick="toggleServiceInfo()" title='Service information'>
+        <img src='images/detail.png' alt='detail'/>
+      -->
+      <div class="row">
+
+      <div class="col-md-6">
+        <div id="recordButton" class="button-row">
+              <img id="microphoneIcon" class="newappIcon" src="images/record.png" class="icon" width="50">
+        </div> 
+      </div>
+
+      <div class="col-md-6">
+          <button class="addBtn" onclick="addItem()" title="add record">
+              <img src="images/add.png" alt="add" height="50" >
+          </button>
+      </div>
+
+    </div>
+    <!-- </div> -->
+    <div id="loadingImage" style="display: none;"></div> 
+    <br><br><br><br><br>  
+    <div id="errorDiv" class='errorMsg'></div>  
+  </footer>
+  <script type="text/javascript" src="/js/util.js"></script>
+  <div id="myImage"><div id="innerImg"></div></div>
+  <br><br><br>  
+  </div>
+
+
+
+        <!-- <div class="row">
+          <nav class="navbar navbar-inverse">
+          <ul class="navbar-text">
+            <li id="recordButton" class="button-row nav-inverse-color">
+            <img id="microphoneIcon" src="images/microphone.svg" class="icon">
+            <span class="nav-label">Record Audio</span>
+            </li>
+            <li class="file-upload button-row nav-inverse-color">
+            <div id="fileUploadTarget">
+              <img src="images/upload.svg" class="icon"></img>
+              <span class="nav-label">Select File</span>
+            </div>
+            </li>
+            <li class="play-sample-1 button-row nav-inverse-color">
+            <img src="images/play.svg" class="icon">
+            <span class="nav-label">Play Sample 1</span>
+            </li>
+            <li class="play-sample-2 button-row nav-inverse-color">
+            <img src="images/play.svg" class="icon">
+            <span class="nav-label">Play  Sample 2</span>
+            </li>
+          </ul> -->
+
+          </nav>
+        </div>
+        <!-- Tab panes -->
+        <div class="row" style="  margin: 0;display:none;">
+          <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
+            <div class="well">
+              <form autocomplete="off" class="form-horizontal">
+                <div role="tabpanel">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Text</a></li>
+                    <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">JSON</a></li>
+                  </ul>
+                  <div class="hr-tab"></div>
+                  <fieldset>
+                    <div class="row error-row">
+                      <div class="col-lg-12">
+                        <div id="errorAlert" >
+                          <span id="errorMessage"></span>
+                          <a class="pull-right" href="#" id="errorClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row notification-row">
+                      <div class="col-lg-12">
+                        <div id="notificationAlert" >
+                          <span id="notificationMessage"></span>
+                          <a class="pull-right" href="#" id="notificationClose">&times;</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row tabpanel-row">
+                      <div class="col-lg-12">
+                        <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane active" id="home2">
+                            <textarea readonly id="resultsText"></textarea>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="profile2">
+                            <textarea readonly id="resultsJSON"></textarea>
+                          </div>
+                        </div>
+                      </div><!-- .col-lg-12 -->
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div><!-- /.well -->
+        </div><!-- /.tabpanel -->
+
+        <div class="row">
+          <div class="col-md-12" style="display: none;">
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>Metadata</h3>
+                <span class="pull-right clickable"><i class="caret-up" style="  margin-top: -1.3em;"></i></span>
+              </div>
+              <div class="panel-body">
+
+                <!-- Table -->
+                <div class="table-scroll">
+                  <table id="metadataTable">
+                    <thead>
+                      <tr class="table-header-row">
+                        <th>WORD</th>
+                        <th>START TIME(sec)</th>
+                        <th>END TIME(sec)</th>
+                        <th>CONFIDENCE</th>
+                      </tr>
+                    </thead>
+                    <tbody id="metadataTableBody">
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- END Table -->
+                <div class="alt-hypothesis" style="display: none;">
+                  <h5>Alternate Hypotheses</h5><hr>
+                  <div class="hypotheses">
+                    <ol></ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+
+      </div><!-- /.container -->
+
+      <!-- for file upload dialog in toolbar -->
+      <input style="display:none" type="file" id="fileUploadDialog">
+         
+<div class="col-lg-6 col-md-12 col-xs-12">
+        <div style="display:none;" class="form-group row loading text-center loading">
+          <h2>&nbsp;</h2>
+          <img src="images/watson.gif">
+        </div>
+        <div style="display: none;" class="form-group row error">
+          <h2>&nbsp;</h2>
+          <div class="well">
+            <p class="errorMsg"></p>
+            <div style="display:none;margin-bottom:10px;" class="captcha">
+              <div data-sitekey="6LcRbQkTAAAAAGUFVbnuqDfse-XZASLZwoC34oJV" class="g-recaptcha"></div>
+            </div>
+          </div>
+        </div>
+		</div>
+
       <!-- Place js files at the end of the document, with fallbacks for CDNs -->
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 	  <script type="text/javascript" src="/js/d3.v2.min.js"></script>
 	  <script type="text/javascript" src="/js/i18n.js"></script>
+   <!--  <script type="text/javascript" src="/js/view.js"></script> -->
 	  <script type="text/javascript" src="/js/personality.js"></script>
   <script type="text/javascript" src="/js/string-utils.js"></script>
   <script type="text/javascript" src="/js/textsummary.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="js/index.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/index.js"></script>
 <script>
     textSummary.init('json');
   </script>
