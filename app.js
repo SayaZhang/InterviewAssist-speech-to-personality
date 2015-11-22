@@ -490,6 +490,58 @@ app.get('/api/favorites', function(request, response) {
 
 });
 
+
+/////////////Alchemy Language
+var consolidate = require('consolidate');
+
+var server = require('http').createServer(app);
+
+//Create the AlchemyAPI object
+var AlchemyAPI = require('./alchemyapi');
+var alchemyapi = new AlchemyAPI();
+
+// all environments
+app.engine('dust',consolidate.dust);
+app.set('views',__dirname + '/views');
+
+//自己加的
+app.get("/dust", function(req, res) {
+    res.render('dust_template.dust', {header: 'DUST - TEST OK'});
+});
+app.get("/ejs", function(req, res) {
+    res.render('ejs_template.ejs', {header: 'EJS - TEST OK'});
+});
+/*app.set('view engine', 'dust');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}*/
+
+app.get('/', example);
+
+var demo_text = 'It is really my honor to have this opportunity for an interview,I hope i can make a good performance today. I\m confident that I can succeed.Now i will introduce myself brieflyI am 26 years old,born in shandong province .I was graduated from qingdao university. my major is electronic.and i got my bachelor degree after my graduation in the year of 20xx.I spend most of my time on study,i have passed CET4/6 . and i have acquired basic knowledge of my major during my school time.In July 20xx, I began work for a small private company as a technical support engineer in QingDao city.Because I\m capable of more responsibilities, so I decided to change my job.And in August 2004,I left QingDao to BeiJing and worked for a foreign enterprise as a automation software test engineer.Because I want to change my working environment, I\d like to find a job which is more challenging. Morover Motorola is a global company, so I feel I can gain the most from working in this kind of company ennvironment. That is the reason why I come here to compete for this position.I think I\m a good team player and I\m a person of great honesty to others. Also I am able to work under great pressure.That’s all. Thank you for giving me the chance.';
+
+function example(req, res) {
+  var output = {};
+
+  //Start the analysis chain
+  entities(req, res, output);
+}
+
+function keywords(req, res, output) {
+  alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response) {
+    output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
+    concepts(req, res, output);
+  });
+  console.log();
+}
+
+
+
 var port = process.env.VCAP_APP_PORT || 3000;
 app.listen(port);
 console.log('listening at:', port);

@@ -174,7 +174,7 @@ loadjs(script);
   else //if new row
   {
         
-    row.innerHTML = "<div class=\"item row\"><div class=\"col-md-2\"><img id=\"userImg\" src=\"images/user.png\"></div><div class=\"col-md-4 name\"><span><img id='user' src=\"images/admin.jpg\"></span><textarea id='nameText' class='form-control' onkeydown='onKey(event)' placeholder=\"输入姓名...\"></textarea><div id=\"star\"><ul><li><a href=\"javascript:;\">1</a></li><li><a href=\"javascript:;\">2</a></li><li><a href=\"javascript:;\">3</a></li><li><a href=\"javascript:;\">4</a></li><li><a href=\"javascript:;\">5</a></li></ul><span></span><p></p></div></div><div class=\"col-md-5\"><textarea id='valText' class='form-control' onkeydown='onKey(event)' placeholder=\"输入备注...\"></textarea></div><div class=\"col-md-1 tool\"><span class='deleteBtn' onclick='deleteItem(this)' title='delete me'><img src=\"images/delete.png\"></span><span class='commitBtn' onclick='saveChange(this)' title='load me'><img  src=\"images/save.jpg\" style=\"margin-top: 10px;\"></span></div></div>"
+    row.innerHTML = "<div class=\"item row\"><div class=\"col-md-2\"><img id=\"userImg\" src=\"images/user.png\"></div><div class=\"col-md-4 name\"><span><img id='user' src=\"images/admin.jpg\"></span><textarea id='nameText' class='form-control' onkeydown='onKey(event)' placeholder=\"输入姓名...\"></textarea><div id=\"star\"><ul><li><a href=\"javascript:;\">1</a></li><li><a href=\"javascript:;\">2</a></li><li><a href=\"javascript:;\">3</a></li><li><a href=\"javascript:;\">4</a></li><li><a href=\"javascript:;\">5</a></li></ul><span></span><p></p></div></div><div class=\"col-md-5\"><textarea id='valText' class='form-control' onkeydown='onKey(event)' placeholder=\"输入备注...\"></textarea></div><div class=\"col-md-1 tool\"><span class='deleteBtn' onclick='deleteItem(this)' title='delete me'><img src=\"images/delete.png\"></span><br><span class='commitBtn' onclick='saveChange(this)' title='load me'><img  src=\"images/save.jpg\" style=\"margin-top: 10px;\"></span></div></div>"
   }
 
   function loadjs(view) {
@@ -283,8 +283,8 @@ function saveChange(contentNode, callback){
     //resultPerson: result 
   };
 
-  alert(data.name);
-  alert(data.value);
+/*  alert(data.name);
+  alert(data.value);*/
   
   if(row.isNew){
     delete row.isNew;

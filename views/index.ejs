@@ -56,9 +56,17 @@
               <img class="newappIcon" src="images/logo.png" style="
           margin-top: 50px;">
               <h1 style="color: white">
-                Welcome to the <span class="blue">Interview Assistant powered by Bluemix</span>
+                Welcome to the <span class="blue">INTERVIEW ASSISTANT powered by Bluemix</span>
               </h1>
-              <p class="description">欢迎使用.</p>
+
+              <div id="tips">
+              <ul >
+              <li>Press the PLUS "+" icon to add a new candidate item</li>
+              <li>Press the Microphone icon to start recording</li>
+              <li>Please recording no less than 100 words</li>
+              <li>Press the Microphone icon AGAIN and then see the results</li>
+              <li>Press the Blue Tick to submit,or the red cross to delete</li></ul>
+              </div>
           </div>
           
 
@@ -69,7 +77,27 @@
               </div>
           </div>
         
+
         <div style="display: none;" class="results">
+        <!-- {+content/} -->
+<!--     <h1>Keyword Extraction</h1>
+    <p>For more information on keyword extraction: <a href='http://www.alchemyapi.com/products/features/keyword-extraction/' target='_blank'>http://www.alchemyapi.com/products/features/keyword-extraction/</a><br/>
+    For the docs: <a href='http://www.alchemyapi.com/api/keyword-extraction/' target='_blank'>http://www.alchemyapi.com/api/keyword-extraction/</a></p>
+
+    <h3>Processed Text</h3>
+    <p>{keywords.text}</p>
+    
+    <h3>Response Object</h3>
+    <textarea rows='20' class='form-control'>{keywords.response}</textarea>
+  
+    <h3>Keywords</h3>
+    {#keywords.results}
+      <p><strong>Text:</strong> {text}<br/>
+      <strong>Relevance:</strong> {relevance}<br/>
+      <strong>Sentiment:</strong> {sentiment.type} {#sentiment.score}({sentiment.score}){/sentiment.score}</p>
+    {/keywords.results}
+    
+    <hr> -->
         <div class="row">
           <!-- <div class="col-lg-5 col-md-12 col-xs-12">
           <h3>Data Behind Your Personality</h3>

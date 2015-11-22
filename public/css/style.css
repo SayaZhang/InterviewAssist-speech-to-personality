@@ -423,11 +423,14 @@ tr:hover .deleteBtn {
   text-align: right;
   border-right: 1px solid #fff;
 }
+@media (min-width: 720px){
 #userImg{
   width:80px;
   height:80px;
-  margin-top:8px;
   margin-bottom: 8px;
+  float: right;
+  margin-right: 10%;
+}
 }
 #vizcontainer{
   width: 67%;
@@ -444,8 +447,14 @@ tr:hover .deleteBtn {
   height: 50;
   font-size: small;
 }
+
 #user{
   margin-top: 8px;
+}
+@media (min-width: 1400px){
+  #user{
+  margin-left: 8%;
+}
 }
 #recordButton{
       cursor: pointer;
@@ -455,7 +464,7 @@ tr:hover .deleteBtn {
   }
 #nameText {
     margin-top: 8px;
-    width: 180px;
+    width: 75%;
     height: 40px;
     border: 1px solid #c4c4c4;
     float: right;
@@ -463,7 +472,12 @@ tr:hover .deleteBtn {
     float: right;
     font-size: 0.8em;
 }
-
+#tips{
+  margin-top: 50px;
+  margin-left: 12%;
+  margin-right: 5%;
+  color: #ddd;
+}
 .errorMsg {
   color: red;
   font-weight:normal;
