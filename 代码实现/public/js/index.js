@@ -787,7 +787,7 @@ function showVizualization(theProfile) {
 					type: 'POST',
 					data: {
 							//recaptcha: recaptcha,
-					text: /*txt,*/"It is really my honor to have this opportunity for an interview,"+
+					text: txt,/*"It is really my honor to have this opportunity for an interview,"+
 　　"I hope i can make a good performance today. I\m confident that I can succeed."+
 　　"Now i will introduce myself briefly"+
 　　"I am 26 years old,born in shandong province ."+
@@ -796,7 +796,7 @@ function showVizualization(theProfile) {
 　　"In July 20xx, I began work for a small private company as a technical support engineer in QingDao city.Because I\m capable of more responsibilities, so I decided to change my job."+
 　　"And in August 2004,I left QingDao to BeiJing and worked for a foreign enterprise as a automation software test engineer.Because I want to change my working environment, I\d like to find a job which is more challenging. Morover Motorola is a global company, so I feel I can gain the most from working in this kind of company ennvironment. That is the reason why I come here to compete for this position."+
 　　"I think I\m a good team player and I\m a person of great honesty to others. Also I am able to work under great pressure."+
-　　"That’s all. Thank you for giving me the chance.",
+　　"That’s all. Thank you for giving me the chance.",*/
 							language: 'en'
 						},
 					  url: '/personality',
